@@ -1,0 +1,26 @@
+name: Check Runner Resources
+
+on:
+  workflow_dispatch: # Bisa dijalankan manual
+
+jobs:
+  check-resources:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Display storage usage
+        run: |
+          echo "💾 Disk usage:"
+          df -h
+
+      - name: Display memory usage
+        run: |
+          echo "🧠 Memory usage:"
+          free -h
+
+      - name: Display CPU info (optional)
+        run: |
+          echo "⚡ CPU Info:"
+          lscpu
