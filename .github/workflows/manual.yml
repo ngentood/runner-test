@@ -8,13 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
 
       - name: Display storage usage
         run: |
           echo "💾 Disk usage:"
           df -h
-
+      - name: Remove unused stuff
+        run: |
+          echo "🗑️ Removing stuff"
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
       - name: Display memory usage
         run: |
           echo "🧠 Memory usage:"
