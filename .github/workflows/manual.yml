@@ -10,7 +10,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: Display storage usage
+      - name: Display storage usage before
         run: |
           echo "💾 Disk usage:"
           df -h
@@ -19,6 +19,10 @@ jobs:
           echo "🗑️ Removing stuff"
           sudo rm -rf "/usr/local/share/boost"
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+      - name: Display storage usage after
+        run: |
+          echo "💾 Disk usage:"
+          df -h
       - name: Display memory usage
         run: |
           echo "🧠 Memory usage:"
